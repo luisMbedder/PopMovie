@@ -6,7 +6,19 @@
     android:paddingBottom="@dimen/activity_vertical_margin" tools:showIn="@layout/activity_main"
     tools:context=".MainActivityFragment">
 
-    <TextView android:text="Hello World!" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+
+    <GridView
+        android:id="@+id/movieGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="auto_fit"
+        android:gravity="center"
+        android:columnWidth="50dp"
+        android:stretchMode="columnWidth"
+        >
+
+    </GridView>
+
 
 </RelativeLayout>
