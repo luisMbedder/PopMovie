@@ -17,14 +17,7 @@ import android.widget.GridView;
 public class MoviePosterFragment extends Fragment {
 
     GridView movieGrid;
-
-    static final String[] numbers = new String[] {
-            "A", "B", "C", "D", "E",
-            "F", "G", "H", "I", "J",
-            "K", "L", "M", "N", "O",
-            "P", "Q", "R", "S", "T",
-            "U", "V", "W", "X", "Y", "Z"};
-
+    
     public MoviePosterFragment() {
     }
 
@@ -35,11 +28,7 @@ public class MoviePosterFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         //get gridView
         movieGrid = (GridView)rootView.findViewById(R.id.movieGridView);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, numbers);
-
-         movieGrid.setAdapter(adapter);
+        movieGrid.setAdapter(new ImageAdapter(getActivity()));
         movieGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -48,8 +37,8 @@ public class MoviePosterFragment extends Fragment {
                 //get activity the fragment is associated with
                 Context context = getActivity();
                 //parent:The adapterview where the click happened
-                Object textObject = parent.getItemAtPosition(position);
-                String forecast = textObject.toString();
+                //Object textObject = parent.getItemAtPosition(position);
+                //String forecast = textObject.toString();
                 //starting a new activity is packaged as an intent
                 Intent intent = new Intent(context, MovieDetailActivity.class);
                 //intent.putExtra(EXTRA_MESSAGE, forecast);
