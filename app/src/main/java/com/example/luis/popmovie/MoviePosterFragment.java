@@ -17,17 +17,19 @@ import android.widget.GridView;
 public class MoviePosterFragment extends Fragment {
 
     GridView movieGrid;
-    
+    //key for thumbnail image position
+    public final static String EXTRA_IMAGE = "com.example.luis.sunshine.app.IMAGE";
     public MoviePosterFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //inflate view object
+        //inflate fragment object
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         //get gridView
         movieGrid = (GridView)rootView.findViewById(R.id.movieGridView);
+        //set ImageAdapter as the source for all times to be displayed on the grid
         movieGrid.setAdapter(new ImageAdapter(getActivity()));
         movieGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -41,7 +43,8 @@ public class MoviePosterFragment extends Fragment {
                 //String forecast = textObject.toString();
                 //starting a new activity is packaged as an intent
                 Intent intent = new Intent(context, MovieDetailActivity.class);
-                //intent.putExtra(EXTRA_MESSAGE, forecast);
+
+                intent.putExtra(EXTRA_IMAGE, position);
                 //start detail Activity
                 startActivity(intent);
             }

@@ -1,6 +1,7 @@
 package com.example.luis.popmovie;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
@@ -18,6 +20,15 @@ public class MovieDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //returns the intent that started this activity
+        Intent intent = getIntent();
+
+        //get selected image position
+        int imagePosition = intent.getExtras().getInt(MoviePosterFragment.EXTRA_IMAGE);
+        ImageAdapter imageAdapter = new ImageAdapter(this);
+        ImageView imageView = (ImageView)findViewById(R.id.SingleView);
+        imageView.setImageResource(imageAdapter.mThumbIds[imagePosition]);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +52,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState)
         {
-            View view = inflater.inflate(R.layout.content_movie_detail,container,false);
+            View view = inflater.inflate(R.layout.fragment_movie_detail,container,false);
             return view;
         }
 

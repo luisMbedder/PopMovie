@@ -23,18 +23,27 @@ public class ImageAdapter extends BaseAdapter{
         return mThumbIds.length;
     }
 
+    //returns the object at the specified position in the adapter
     public Object getItem(int position)
     {
         return null;
     }
 
+    //returns the row id of the item at the specified position in the adapter
     public long getItemId(int position)
     {
         return 0;
     }
 
     // create a new ImageView for each item referenced by the Adapter
+    /*
+        position = position in the grid
+        convertView: used for recycling Views that are no longer displayed due to scrolling off
+                     the screen.
+        parent: The parent that this view will eventually be attached to(GridView)
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
+        //ImageView class allows you to display an image file
         ImageView imageView;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
@@ -51,7 +60,7 @@ public class ImageAdapter extends BaseAdapter{
     }
 
     // references to our images
-    private Integer[] mThumbIds = {
+    public Integer[] mThumbIds = {
             R.drawable.sample_2, R.drawable.sample_3,
             R.drawable.sample_4, R.drawable.sample_5,
             R.drawable.sample_6, R.drawable.sample_7,
