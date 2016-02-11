@@ -8,6 +8,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.example.luis.popmovie.R;
+import com.example.luis.popmovie.models.AsyncDownloader;
 import com.example.luis.popmovie.models.MovieDBUrl;
 
 import java.net.URI;
@@ -61,7 +62,10 @@ public class ImageAdapter extends BaseAdapter{
         }
 
         MovieDBUrl url = MovieDBUrl.getInstance();
-        URL popMoviesHttpUrl = url.getPopularMoviesQuery();
+        URL popMoviesUrl = url.getPopularMoviesQuery();
+
+        AsyncDownloader downloader = new AsyncDownloader();
+        downloader.execute(popMoviesUrl);
 
         imageView.setImageResource(mThumbIds[position]);
         return imageView;
