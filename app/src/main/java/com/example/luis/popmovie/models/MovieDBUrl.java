@@ -3,6 +3,9 @@ package com.example.luis.popmovie.models;
 import android.net.Uri;
 import android.util.Log;
 
+import com.squareup.okhttp.HttpUrl;
+import com.squareup.okhttp.Request;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,12 +19,12 @@ public class MovieDBUrl {
     //Volatile keyword ensures that multiple threads handle the unique/instance correctly
     private volatile static MovieDBUrl uniqueInstance;
 
-    private final String POP_MOVIES_URL = "http://api.themoviedb.org/3/discover/movie";
+    private final String POP_MOVIES_URL = "http://api.themoviedb.org/3/discover/movie?";
     private final String IMAGE_URL = "http://image.tmdb.org/t/p/";
     private final String API_KEY = "1b972f38291bc16e6b2b7468a0014dd8";
 
-    final String SORT_PARAM = "sort_by=";
-    final String KEY ="api_key=";
+    final String SORT_PARAM = "sort_by";
+    final String KEY ="api_key";
 
     private MovieDBUrl()
     {
@@ -45,16 +48,22 @@ public class MovieDBUrl {
         String TAG = "getPopularMoviesQuery";
         URL parsedURL = null;
 
+
         try {
             Uri builtUri = Uri.parse(POP_MOVIES_URL).buildUpon()
-                    .appendQueryParameter(SORT_PARAM, "popularity.desc&")
+                    .appendQueryParameter(SORT_PARAM, "popularity.desc")
                     .appendQueryParameter(KEY, API_KEY).build();
             parsedURL = new URL(builtUri.toString());
+
+          /*  HttpUrl.Builder builtUrl = HttpUrl.parse(POP_MOVIES_URL).newBuilder();
+            builtUrl.addQueryParameter(SORT_PARAM, "popularity.desc");
+            builtUrl.addQueryParameter(KEY,API_KEY).build();
+             parsedURL = builtUrl.build().toString();*/
         }
-        catch(MalformedURLException e){
-            Log.e(TAG ,"Malformed URLException caught : " + e);
-            return null;
-        }
+       catch(MalformedURLException e){
+           Log.e(TAG ,"Malformed URLException caught : " + e);
+           return null;
+       }
 
         return parsedURL;
 

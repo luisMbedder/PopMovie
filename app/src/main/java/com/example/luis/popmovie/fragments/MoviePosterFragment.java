@@ -10,9 +10,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.example.luis.popmovie.models.AsyncDownloader;
+import com.example.luis.popmovie.models.MovieDBUrl;
 import com.example.luis.popmovie.views.adapters.ImageAdapter;
 import com.example.luis.popmovie.views.MovieDetailActivity;
 import com.example.luis.popmovie.R;
+
+import java.net.URL;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -47,6 +51,12 @@ public class MoviePosterFragment extends Fragment {
                 //String forecast = textObject.toString();
                 //starting a new activity is packaged as an intent
                 Intent intent = new Intent(context, MovieDetailActivity.class);
+
+                MovieDBUrl url = MovieDBUrl.getInstance();
+                URL popMoviesUrl = url.getPopularMoviesQuery();
+
+                AsyncDownloader downloader = new AsyncDownloader();
+                downloader.execute(popMoviesUrl);
 
                 intent.putExtra(EXTRA_IMAGE, position);
                 //start detail Activity

@@ -10,6 +10,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 /**
@@ -45,7 +46,9 @@ public class AsyncDownloader extends AsyncTask<URL,Void,String[]> {
 
             if(response.isSuccessful())
             {
+
                 jsonData = response.body().string();
+
             }
             else
             {

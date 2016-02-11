@@ -61,12 +61,6 @@ public class ImageAdapter extends BaseAdapter{
             imageView = (ImageView) convertView;
         }
 
-        MovieDBUrl url = MovieDBUrl.getInstance();
-        URL popMoviesUrl = url.getPopularMoviesQuery();
-
-        AsyncDownloader downloader = new AsyncDownloader();
-        downloader.execute(popMoviesUrl);
-
         imageView.setImageResource(mThumbIds[position]);
         return imageView;
     }
