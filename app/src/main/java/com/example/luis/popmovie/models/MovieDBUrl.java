@@ -54,11 +54,6 @@ public class MovieDBUrl {
                     .appendQueryParameter(SORT_PARAM, "popularity.desc")
                     .appendQueryParameter(KEY, API_KEY).build();
             parsedURL = new URL(builtUri.toString());
-
-          /*  HttpUrl.Builder builtUrl = HttpUrl.parse(POP_MOVIES_URL).newBuilder();
-            builtUrl.addQueryParameter(SORT_PARAM, "popularity.desc");
-            builtUrl.addQueryParameter(KEY,API_KEY).build();
-             parsedURL = builtUrl.build().toString();*/
         }
        catch(MalformedURLException e){
            Log.e(TAG ,"Malformed URLException caught : " + e);

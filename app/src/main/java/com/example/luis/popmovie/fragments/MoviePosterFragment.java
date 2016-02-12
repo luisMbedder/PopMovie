@@ -39,6 +39,7 @@ public class MoviePosterFragment extends Fragment {
         //set ImageAdapter as the source for all times to be displayed on the grid
         movieGrid.setAdapter(new ImageAdapter(getActivity()));
 
+
         movieGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -52,11 +53,7 @@ public class MoviePosterFragment extends Fragment {
                 //starting a new activity is packaged as an intent
                 Intent intent = new Intent(context, MovieDetailActivity.class);
 
-                MovieDBUrl url = MovieDBUrl.getInstance();
-                URL popMoviesUrl = url.getPopularMoviesQuery();
 
-                AsyncDownloader downloader = new AsyncDownloader();
-                downloader.execute(popMoviesUrl);
 
                 intent.putExtra(EXTRA_IMAGE, position);
                 //start detail Activity
@@ -70,4 +67,27 @@ public class MoviePosterFragment extends Fragment {
         return rootView;
 
     }
+
+    private void updateMoviePosters()
+    {
+        MovieDBUrl url = MovieDBUrl.getInstance();
+        URL popMoviesUrl = url.getPopularMoviesQuery();
+
+        AsyncDownloader downloader = new AsyncDownloader(this);
+        downloader.execute(popMoviesUrl);
+    }
+
+    public void parseJson(String result)
+    {
+        int a =0;
+    }
+
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        updateMoviePosters();
+    }
+
 }

@@ -2,8 +2,10 @@ package com.example.luis.popmovie.models;
 
 import android.app.DownloadManager;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Log;
 
+import com.example.luis.popmovie.fragments.MoviePosterFragment;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -16,19 +18,16 @@ import java.net.URL;
 /**
  * Created by Luis on 2/9/2016.
  */
-public class AsyncDownloader extends AsyncTask<URL,Void,String[]> {
+public class AsyncDownloader extends AsyncTask<URL,Void,String> {
 
-
-    public AsyncDownloader()
+    MoviePosterFragment container;
+    public AsyncDownloader(MoviePosterFragment passedFragment)
     {
-
+            this.container = passedFragment;
     }
 
-
-    String[] resultArray;
-
     //this will get passed the moveDB url
-    protected String[] doInBackground(URL... params)
+    protected String doInBackground(URL... params)
     {
         URL popMovieUrl = params[0];
 
@@ -61,7 +60,19 @@ public class AsyncDownloader extends AsyncTask<URL,Void,String[]> {
             return null;
         }
 
-        return resultArray;
+        return jsonData;
+    }
+
+    @Override
+    protected void onPostExecute(String result)
+    {
+        // The activity can be null if it is thrown out by Android while task is running!
+        if(container!=null && container.getActivity()!=null)
+        {
+            container.parseJson(result);
+            this.container=null;
+        }
+
     }
 
 
