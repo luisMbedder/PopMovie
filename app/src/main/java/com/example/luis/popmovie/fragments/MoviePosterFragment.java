@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +13,26 @@ import android.widget.GridView;
 
 import com.example.luis.popmovie.activities.adapters.GridViewAdapter;
 import com.example.luis.popmovie.utils.AsyncDownloader;
+import com.example.luis.popmovie.utils.GridItem;
 import com.example.luis.popmovie.utils.MovieDBUrl;
 import com.example.luis.popmovie.activities.MovieDetailActivity;
 import com.example.luis.popmovie.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MoviePosterFragment extends Fragment {
 
+    private final String LOG_TAG = MoviePosterFragment.class.getSimpleName();
     GridView movieGrid;
+    private ArrayList<GridItem> mGridData;
     //key for thumbnail image position
     public final static String EXTRA_IMAGE = "com.example.luis.sunshine.app.IMAGE";
     public MoviePosterFragment() {
@@ -36,8 +45,9 @@ public class MoviePosterFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         //get gridView
         movieGrid = (GridView)rootView.findViewById(R.id.movieGridView);
+        mGridData = new ArrayList<GridItem>();
         //set GridViewAdapter as the source for all times to be displayed on the grid
-        movieGrid.setAdapter(new GridViewAdapter(getActivity()));
+        movieGrid.setAdapter(new GridViewAdapter(getActivity(),R.layout.grid_item_layout,mGridData));
 
 
         movieGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -79,7 +89,29 @@ public class MoviePosterFragment extends Fragment {
 
     public void parseJson(String result)
     {
+        //String LOG_TAG = "parseJson";
+        //These are the names of the JSON object that need to be extracted
+        final String TMDB_RESULTS = "results";
+        final String TMDB_POSTER = "poster_path";
+        final String TMDB_POPULARITY = "popularity";
+        String poster;
+        try
+        {
+            JSONObject response = new JSONObject(result);
+            JSONArray moviesArray = response.getJSONArray(TMDB_RESULTS);
 
+            for(int i = 0;i < moviesArray.length();i++)
+            {
+                JSONObject movie = moviesArray.getJSONObject(i);
+                poster = movie.getString(TMDB_POSTER);
+
+            }
+
+        }
+        catch (JSONException e)
+        {
+            Log.e(LOG_TAG, "Error creating JSONObject in parseJson()", e);
+        }
         int a =0;
     }
 

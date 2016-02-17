@@ -31,9 +31,9 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         //get selected image position
         int imagePosition = intent.getExtras().getInt(MoviePosterFragment.EXTRA_IMAGE);
-        GridViewAdapter gridViewAdapter = new GridViewAdapter(this);
+       // GridViewAdapter gridViewAdapter = new GridViewAdapter(this,R.layout.grid_item_layout,);
         ImageView imageView = (ImageView)findViewById(R.id.SingleView);
-        imageView.setImageResource(gridViewAdapter.mThumbIds[imagePosition]);
+       // imageView.setImageResource(gridViewAdapter.mThumbIds[imagePosition]);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
