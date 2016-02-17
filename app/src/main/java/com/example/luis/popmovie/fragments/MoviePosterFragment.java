@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.example.luis.popmovie.models.AsyncDownloader;
-import com.example.luis.popmovie.models.MovieDBUrl;
-import com.example.luis.popmovie.views.adapters.ImageAdapter;
-import com.example.luis.popmovie.views.MovieDetailActivity;
+import com.example.luis.popmovie.activities.adapters.GridViewAdapter;
+import com.example.luis.popmovie.utils.AsyncDownloader;
+import com.example.luis.popmovie.utils.MovieDBUrl;
+import com.example.luis.popmovie.activities.MovieDetailActivity;
 import com.example.luis.popmovie.R;
 
 import java.net.URL;
@@ -36,8 +36,8 @@ public class MoviePosterFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         //get gridView
         movieGrid = (GridView)rootView.findViewById(R.id.movieGridView);
-        //set ImageAdapter as the source for all times to be displayed on the grid
-        movieGrid.setAdapter(new ImageAdapter(getActivity()));
+        //set GridViewAdapter as the source for all times to be displayed on the grid
+        movieGrid.setAdapter(new GridViewAdapter(getActivity()));
 
 
         movieGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -79,6 +79,7 @@ public class MoviePosterFragment extends Fragment {
 
     public void parseJson(String result)
     {
+
         int a =0;
     }
 
