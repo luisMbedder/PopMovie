@@ -1,15 +1,23 @@
 package com.example.luis.popmovie.activities.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import com.example.luis.popmovie.R;
 import com.example.luis.popmovie.utils.GridItem;
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Luis on 2/3/2016.
@@ -39,6 +47,12 @@ public class GridViewAdapter extends ArrayAdapter<GridItem>{
         return null;
     }*/
 
+    public void setGridData(ArrayList<GridItem> passedGridData)
+    {
+        this.mGridData = passedGridData;
+        notifyDataSetChanged();
+    }
+
     //returns the row id of the item at the specified position in the adapter
     public long getItemId(int position)
     {
@@ -55,18 +69,33 @@ public class GridViewAdapter extends ArrayAdapter<GridItem>{
     public View getView(int position, View convertView, ViewGroup parent) {
         //ImageView class allows you to display an image file
         ImageView imageView;
-        if (convertView == null) {
+        View row = convertView;
+        ViewHolder holder;
+        if (row == null) {
             // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            LayoutInflater inflater = ((Activity)mContext).getLayoutInflater();
+            row = inflater.inflate(layoutResourceId,parent,false);
+            holder = new ViewHolder();
+            holder.imageView = (ImageView) row.findViewById(R.id.grid_item_image);
+            row.setTag(holder);
+           // imageView = new ImageView(mContext);
+           // imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+          //  imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+          //  imageView.setPadding(8, 8, 8, 8);
         } else {
-            imageView = (ImageView) convertView;
+            holder = (ViewHolder) row.getTag();
+            //imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(mThumbIds[position]);
-        return imageView;
+        GridItem item = mGridData.get(position);
+        Picasso.with(mContext).load(item.getImage()).into(holder.imageView);
+        //imageView.setImageResource(mThumbIds[position]);
+        return row;
+    }
+
+    static class ViewHolder
+    {
+        ImageView imageView;
     }
 
     // references to our images

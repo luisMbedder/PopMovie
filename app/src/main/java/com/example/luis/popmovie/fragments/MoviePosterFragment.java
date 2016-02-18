@@ -31,7 +31,8 @@ import java.util.ArrayList;
 public class MoviePosterFragment extends Fragment {
 
     private final String LOG_TAG = MoviePosterFragment.class.getSimpleName();
-    GridView movieGrid;
+    private GridViewAdapter mGridAdapter;
+    private GridView movieGrid;
     private ArrayList<GridItem> mGridData;
     //key for thumbnail image position
     public final static String EXTRA_IMAGE = "com.example.luis.sunshine.app.IMAGE";
@@ -47,14 +48,14 @@ public class MoviePosterFragment extends Fragment {
         movieGrid = (GridView)rootView.findViewById(R.id.movieGridView);
         mGridData = new ArrayList<GridItem>();
         //set GridViewAdapter as the source for all times to be displayed on the grid
-        movieGrid.setAdapter(new GridViewAdapter(getActivity(),R.layout.grid_item_layout,mGridData));
+        mGridAdapter = new GridViewAdapter(getActivity(),R.layout.grid_item_layout,mGridData);
+
 
 
         movieGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick (AdapterView<?> parent, View view, int position, long id)
-            {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //get activity the fragment is associated with
                 Context context = getActivity();
                 //parent:The adapterview where the click happened
@@ -62,7 +63,6 @@ public class MoviePosterFragment extends Fragment {
                 //String forecast = textObject.toString();
                 //starting a new activity is packaged as an intent
                 Intent intent = new Intent(context, MovieDetailActivity.class);
-
 
 
                 intent.putExtra(EXTRA_IMAGE, position);
@@ -73,6 +73,7 @@ public class MoviePosterFragment extends Fragment {
         });
 
 
+        updateMoviePosters();
 
         return rootView;
 
@@ -94,25 +95,31 @@ public class MoviePosterFragment extends Fragment {
         final String TMDB_RESULTS = "results";
         final String TMDB_POSTER = "poster_path";
         final String TMDB_POPULARITY = "popularity";
+        final String IMAGE_URL = "http://image.tmdb.org/t/p/w185/";
         String poster;
         try
         {
             JSONObject response = new JSONObject(result);
             JSONArray moviesArray = response.getJSONArray(TMDB_RESULTS);
-
+            GridItem item=null;
             for(int i = 0;i < moviesArray.length();i++)
             {
                 JSONObject movie = moviesArray.getJSONObject(i);
-                poster = movie.getString(TMDB_POSTER);
-
+                poster = IMAGE_URL+movie.getString(TMDB_POSTER);
+                item = new GridItem();
+                item.setImage(poster);
+                mGridData.add(item);
             }
+
+            mGridAdapter.setGridData(mGridData);
+            movieGrid.setAdapter(mGridAdapter);
 
         }
         catch (JSONException e)
         {
             Log.e(LOG_TAG, "Error creating JSONObject in parseJson()", e);
         }
-        int a =0;
+
     }
 
 
@@ -120,7 +127,7 @@ public class MoviePosterFragment extends Fragment {
     public void onStart()
     {
         super.onStart();
-        updateMoviePosters();
+     //   updateMoviePosters();
     }
 
 }

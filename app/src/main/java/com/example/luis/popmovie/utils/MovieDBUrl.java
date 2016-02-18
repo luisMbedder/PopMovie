@@ -16,7 +16,6 @@ public class MovieDBUrl {
     private volatile static MovieDBUrl uniqueInstance;
 
     private final String POP_MOVIES_URL = "http://api.themoviedb.org/3/discover/movie?";
-    private final String IMAGE_URL = "http://image.tmdb.org/t/p/";
     private final String API_KEY = "1b972f38291bc16e6b2b7468a0014dd8";
 
     final String SORT_PARAM = "sort_by";
