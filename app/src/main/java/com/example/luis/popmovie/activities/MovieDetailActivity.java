@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.luis.popmovie.activities.adapters.GridViewAdapter;
 import com.example.luis.popmovie.R;
 import com.example.luis.popmovie.fragments.MoviePosterFragment;
 
@@ -29,9 +28,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         //returns the intent that started this activity
         Intent intent = getIntent();
 
-        //get selected image position
-        int imagePosition = intent.getExtras().getInt(MoviePosterFragment.EXTRA_IMAGE);
-       // GridViewAdapter gridViewAdapter = new GridViewAdapter(this,R.layout.grid_item_layout,);
+       // GridViewAdapter gridViewAdapter = new GridViewAdapter(this,R.layout.movie_detail_layout,);
         ImageView imageView = (ImageView)findViewById(R.id.SingleView);
        // imageView.setImageResource(gridViewAdapter.mThumbIds[imagePosition]);
 
