@@ -30,6 +30,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
+
+        <meta-data
+            android:name="com.example.luis.popmovie.utils.GlideConfiguration"
+            android:value="GlideModule" />
+
     </application>
 
 </manifest>

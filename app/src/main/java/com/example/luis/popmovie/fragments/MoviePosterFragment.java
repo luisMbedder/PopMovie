@@ -80,6 +80,7 @@ public class MoviePosterFragment extends Fragment {
         {
 
             Results[] mResults = movieGeneral.getResults();
+
          /*  if(movieItemArray.size()!=0) {
                 int a = movieItemArray.size() - 1;
                 movieItemArray.remove(movieItemArray.size() - 1);
@@ -138,14 +139,17 @@ public class MoviePosterFragment extends Fragment {
         if (mRecyclerView.getLayoutManager() instanceof GridLayoutManager) {
             final GridLayoutManager mGridLayoutManager = (GridLayoutManager) mRecyclerView.getLayoutManager();
             int a = mGridLayoutManager.getSpanCount();
+
              visibleThreshold=visibleThreshold* mGridLayoutManager.getSpanCount();
-          //   visibleThreshold =1;
+
+            //   visibleThreshold =1;
             mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
                 public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
                     int lastVisibleItemPositions = mGridLayoutManager.findLastVisibleItemPosition();
                     totalItemCount = mGridLayoutManager.getItemCount();
+                    int h = mGridLayoutManager.getHeight();
                     lastVisibleItem = mGridLayoutManager.findLastVisibleItemPosition();
                     if (!loading && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
                         // End has been reached

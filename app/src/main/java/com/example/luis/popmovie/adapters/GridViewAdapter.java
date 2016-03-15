@@ -1,12 +1,14 @@
 package com.example.luis.popmovie.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.luis.popmovie.R;
 import com.example.luis.popmovie.utils.movieItem;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Luis on 2/3/2016.
@@ -31,8 +34,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
     private int lastVisibleItem, totalItemCount;
     private boolean loading;
     static int holderCount;
-
-//    private OnLoadMoreListener onLoadMoreListener;
+    private  ArrayList<movieHolder> holderArray = new ArrayList<movieHolder>();
 
     public GridViewAdapter(Context passedContext,ArrayList<movieItem> passedGridData,RecyclerView passedRecyclerView)
     {
@@ -54,8 +56,9 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
             super(itemView);
             mView = itemView;
             mMoviePoster = (ImageView)itemView.findViewById(R.id.moviePoster);
-            mMovieName = (TextView)itemView.findViewById(R.id.movieText);
-
+            //mMovieName = (TextView)itemView.findViewById(R.id.movieText);
+           int h =  mMoviePoster.getMeasuredHeight();
+           int w =  mMoviePoster.getMeasuredWidth();
             holderCount++;
             Log.i("new movieHolder", String.valueOf(holderCount));
         }
@@ -79,6 +82,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
             // inflate the item view from the view's layout file
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.grid_item_layout, parent, false);
+
             //wrap the view in a new movie object
             movieHolder movie = new movieHolder(v);
           //  vh = new movieHolder(v);
@@ -106,9 +110,10 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
         // - replace the contents of the view with that element
 
 //    if(holder instanceof movieHolder) {
-        // Picasso.with(mContext).load(mGridData.get(position).getImage()).into(holder.mMoviePoster);
+         Picasso.with(mContext).load(mGridData.get(position).getImage()).into(holder.mMoviePoster);
+            addHolder(holder);
         //Glide proves to be faster than picasso for image loading.
-        Glide.with(mContext).load(mGridData.get(position).getImage()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.mMoviePoster);
+     //   Glide.with(mContext).load(mGridData.get(position).getImage()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.mMoviePoster);
         int a = 0;
  //   }
 /*    else
@@ -118,6 +123,24 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
 */
     }
 
+    private void addHolder(movieHolder holder)
+    {
+        //for debug, remove later
+        holderArray.add(holder);
+        int w =holderArray.get(0).mView.getMeasuredWidth();//paretn linearlayout layout width
+        int h =holderArray.get(0).mView.getMeasuredHeight();//parent linear layout height
+        int imageW =holderArray.get(0).mMoviePoster.getWidth();
+        int imageH = holderArray.get(0).mMoviePoster.getHeight();
+        int imageMW = holderArray.get(0).mMoviePoster.getMeasuredWidth();
+        int imageMH = holderArray.get(0).mMoviePoster.getMeasuredHeight();
+
+    }
+
+
+    public movieHolder getHolder(int i)
+    {
+        return holderArray.get(i);
+    }
  /*   public static class ProgressViewHolder extends RecyclerView.ViewHolder {
         public ProgressBar progressBar;
 
@@ -133,6 +156,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
     public int getItemCount() {
        int a = mGridData.size();
         return mGridData.size();
+
     }
 
     //returns the object at the specified position in the adapter

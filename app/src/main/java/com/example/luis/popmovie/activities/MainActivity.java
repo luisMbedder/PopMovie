@@ -38,21 +38,9 @@ public class MainActivity extends AppCompatActivity implements endlessScrollCall
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       // moviePosterFragment = new MoviePosterFragment();
         moviePosterFragment = (MoviePosterFragment)getSupportFragmentManager().findFragmentById(R.id.fragment);
 
-
- /*       if(savedInstanceState ==null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.container, moviePosterFragment).commit();
-
-        }*/
-
-       FetchMovies(1);
-      //  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-      //  MoviePosterFragment fragment = (MoviePosterFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_main);
-      //  fragment.FetchMovie();
+        FetchMovies(1);
 
     }
 
@@ -90,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements endlessScrollCall
         movieAPI.fetchPopMovies(MOST_POPULAR, API_KEY,PAGE,new Callback<MovieGeneral>() {
             @Override
             public void success(MovieGeneral movieGeneral, Response response) {
-                //add fragment to layout
 
               moviePosterFragment.drawLayout(movieGeneral);
 
@@ -110,9 +97,6 @@ public class MainActivity extends AppCompatActivity implements endlessScrollCall
     @Override
     public void loadMoreMovies(int page){
 
-        int a=0;
         FetchMovies(page);
-        /** Do something with the string and return your Integer instead of 0 **/
-       // return 0;
     }
 }
