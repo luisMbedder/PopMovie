@@ -2,6 +2,7 @@ package com.example.luis.popmovie.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,7 +14,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.example.luis.popmovie.activities.MovieDetailActivity;
 import com.example.luis.popmovie.adapters.GridViewAdapter;
+import com.example.luis.popmovie.utils.GridClickListener;
 import com.example.luis.popmovie.utils.MovieGeneral;
 import com.example.luis.popmovie.R;
 import com.example.luis.popmovie.utils.Results;
@@ -26,7 +29,7 @@ import java.util.ArrayList;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MoviePosterFragment extends Fragment {
+public class MoviePosterFragment extends Fragment implements GridClickListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter GridAdapter;
@@ -57,7 +60,9 @@ public class MoviePosterFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(mlayoutManager);
         //set adapter with empty data
-        GridAdapter = new GridViewAdapter(getContext(),movieItemArray,mRecyclerView);
+
+        GridAdapter = new GridViewAdapter(getContext(),movieItemArray,this);
+        mRecyclerView.getRecycledViewPool().setMaxRecycledViews(GridAdapter.getItemViewType(0), 50);
         mRecyclerView.setAdapter(GridAdapter);
       //  mProgressWheel = (ProgressWheel) rootView.findViewById(android.R.id.progress);
        endlessScroll();
@@ -76,6 +81,20 @@ public class MoviePosterFragment extends Fragment {
 
     }
 
+    @Override
+    public void onGridClicked(GridViewAdapter.movieHolder holder, int position)
+    {
+        int a = 0;
+        Intent intent = new Intent(getContext(), MovieDetailActivity.class);
+         Bundle b = new Bundle();
+         b.putString("backdropImage",movieItemArray.get(position).getBackdropImage());
+         b.putString("voteAverage", movieItemArray.get(position).getVoteAverage());
+         b.putString("moviePoster", movieItemArray.get(position).getImage());
+         intent.putExtra("movieBundle", b);
+         getContext().startActivity(intent);
+    }
+
+
         public void drawLayout(MovieGeneral movieGeneral)
         {
 
@@ -91,8 +110,8 @@ public class MoviePosterFragment extends Fragment {
             if(mResults.length>0)
             {
                 for (Results result : mResults) {
-                    movieItem movieObject = new movieItem(result.getTitle(), result.getPoster_path()
-                            , result.getOverview(), result.getVote_average());
+                    movieItem movieObject = new movieItem(result.getTitle(), result.getPoster_path(),
+                            result.getBackdrop_path(), result.getOverview(), result.getVote_average());
                  //  movieItemArray.add(movieObject);
                     addItem(movieObject);
 

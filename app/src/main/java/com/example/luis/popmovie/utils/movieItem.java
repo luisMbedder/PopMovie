@@ -7,14 +7,17 @@ public class movieItem {
 
     private String mTitle;
     private String mImage;
+    private String mBackDropImage;
     private String mOverview;
     private String mVoteAverage;
     final String IMAGE_URL = "http://image.tmdb.org/t/p/w185/";
+    final String BACKDROP_URL = "http://image.tmdb.org/t/p/w500/";
 
-    public movieItem(String Title, String Image, String Overview, String VoteAverage)
+    public movieItem(String Title, String Image, String BackdropImage, String Overview, String VoteAverage)
     {
 
         this.mImage = Image;
+        this.mBackDropImage = BackdropImage;
         this.mTitle = Title;
         this.mOverview = Overview;
         this.mVoteAverage = VoteAverage;
@@ -29,6 +32,8 @@ public class movieItem {
     {
         return IMAGE_URL+mImage;
     }
+
+    public String getBackdropImage(){ return BACKDROP_URL+mBackDropImage; }
 
     public String getTitle()
     {

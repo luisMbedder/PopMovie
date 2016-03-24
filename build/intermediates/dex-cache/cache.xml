@@ -2,116 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\classes.jar"
+        jar="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.0.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\classes-2f2eef9995d903fc45d50925fd74549d89785968.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\libs\internal_impl-23.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6e239441500605809818997dd63b62a947195f8c">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.0-0cd6906acb24d7bd82f13f12030f77bd788c63d4.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.0.1\b34c1f2d993044656e87f88970b6818e99e886ba\okhttp-3.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b34c1f2d993044656e87f88970b6818e99e886ba">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\okhttp-3.0.1-c51aad89eab67a95fe1abc68a23c5430c0763a4b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-e997b7a473e093854c0668b9dbd779b99594c509.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\exploded-aar\com.pnikosis\materialish-progress\1.7\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="41a4edf3c43fdbce6eba27da50b17ff9933987f1">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\classes-9625a392e260cd4dec4c432bbb4e6048f445fccf.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\classes-1254c77d2e010a3f1ee01b818af59e677a6136de.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\gson-2.3.1-0e8e79a9dc7536f8e01345190a2b56baf6a0d43c.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.0-a2af3b1508df9400215bfe5016d194d5936cd7cb.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\classes-21bb989c10ec8bd31b265b60382a969f4702ec43.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\classes-8e960c1055bca5d6a0d37c737b7185c2606b2d47.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-4875cb6104f132350b2feb13d50c914bc0fddeae.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.jakewharton.picasso\picasso2-okhttp3-downloader\1.0.2\74a586d03a233d356290983d1ef23a64c1d122b2\picasso2-okhttp3-downloader-1.0.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="74a586d03a233d356290983d1ef23a64c1d122b2">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\picasso2-okhttp3-downloader-1.0.2-ea0189df3d0035adf36df7ef7072874d8150eed8.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\okhttp-2.5.0-34902f54f443e93a28c11f84f607a9709a2da5db.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.5.2\ecf534dba3a8446ce84cbb797d314763be212a68\glide-3.5.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ecf534dba3a8446ce84cbb797d314763be212a68">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\glide-3.5.2-3885f3ce5bf043d492456bf3bcaa0a09c16876c1.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\okio-1.6.0-9d9e87fc72b187c391fdd57c5eb1202d33f289c6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Luis\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a681c044244d9fc375198588297a39ba78028423">
-        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-aa7acaca559cca2184a401170ddbb08f14469552.jar" />
+        sha1="39ae02ce40c3ac828abbf780ce0ff5d7a28b7d6a">
+        <dex dex="C:\Users\Luis\Documents\ProgrammingProjects\Android\PopMovie\app\build\intermediates\pre-dexed\debug\classes-744ef53f6c2864f72a538edd36e594d03966da03.jar" />
     </item>
 
 </items>
