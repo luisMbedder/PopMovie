@@ -1,21 +1,12 @@
 package com.example.luis.popmovie.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,12 +16,8 @@ import java.util.ArrayList;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.luis.popmovie.R;
-import com.example.luis.popmovie.activities.MovieDetailActivity;
-import com.example.luis.popmovie.network.MovieClient;
 import com.example.luis.popmovie.utils.GridClickListener;
-import com.example.luis.popmovie.utils.movieItem;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
+import com.example.luis.popmovie.utils.MovieItem;
 
 /**
  * Created by Luis on 2/3/2016.
@@ -42,7 +29,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
     private Context mContext;
     private int layoutResourceId;
     //ArrayList of GridItems
-    private ArrayList<movieItem> mGridData = new ArrayList<movieItem>();
+    private ArrayList<MovieItem> mGridData = new ArrayList<MovieItem>();
     // The minimum amount of items to have below your current scroll position before loading more.
     private int visibleThreshold = 5;
     private int lastVisibleItem, totalItemCount;
@@ -50,10 +37,10 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
     static int holderCount;
 //    private  ArrayList<movieHolder> holderArray = new ArrayList<movieHolder>();
 
-    static int gridCellWidth;
+    static int gridCellHeight;
     private final GridClickListener mListener;
 
-    public GridViewAdapter(Context passedContext,ArrayList<movieItem> passedGridData,GridClickListener passedListener)
+    public GridViewAdapter(Context passedContext,ArrayList<MovieItem> passedGridData,GridClickListener passedListener)
     {
         //super(passedContext,passedLayoutResourceId,passedGridData);
         this.mContext = passedContext;
@@ -61,13 +48,10 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
         this.mGridData=passedGridData;
         mListener = passedListener;
 
-        WindowManager wm = (WindowManager) this.mContext.getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        int windowWidth = display.getWidth();  // deprecated
-
-
+        DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+        int windowWidth = metrics.widthPixels;
         int cellWidth = windowWidth / 3;
-        gridCellWidth = (cellWidth * 278) / 185;
+        gridCellHeight = (cellWidth * 278) / 185;
     }
 
     //nested inner class for movie holder
@@ -93,10 +77,12 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)mMoviePoster.getLayoutParams();
 
             // subtitle layout params
-            LinearLayout.LayoutParams contentSubtitleParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, gridCellWidth);
+            LinearLayout.LayoutParams contentSubtitleParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, gridCellHeight);
             contentSubtitleParams.setMargins(params.leftMargin, params.topMargin, params.rightMargin, params.bottomMargin);
             mMoviePoster.setLayoutParams(contentSubtitleParams);
 
+            h =  mMoviePoster.getMeasuredHeight();
+            w =  mMoviePoster.getMeasuredWidth();
             Log.i(TAG, "h : " + h + " w : " + w);
 
             holderCount++;
@@ -158,10 +144,10 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
         // - replace the contents of the view with that element
 
         try {
-            Log.i(TAG, "onBindViewHolder CALLED ... " + mGridData.get(position).getImage());
+            Log.i(TAG, "onBindViewHolder CALLED ... " + mGridData.get(position).getPosterImage());
 
-            Picasso.with(mContext).load(mGridData.get(position).getImage()).into(holder.mMoviePoster);
-
+           // Picasso.with(mContext).load(mGridData.get(position).getImage()).into(holder.mMoviePoster);
+            Glide.with(mContext).load(mGridData.get(position).getPosterImage()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.mMoviePoster);
             holder.mMoviePoster.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v)
@@ -204,7 +190,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.movieH
         return null;
     }*/
 
-    public void setGridData(ArrayList<movieItem> passedGridData)
+    public void setGridData(ArrayList<MovieItem> passedGridData)
     {
         this.mGridData = passedGridData;
      //   notifyDataSetChanged();

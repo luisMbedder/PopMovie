@@ -12,21 +12,21 @@ public class Results
     private String overview;
     private String release_date;
     private String[] genre_ids;
-    private String id;
+    private int id;
     private String original_title;
     private String original_language;
     private String title;
     private String backdrop_path;
     private String popularity;
-    private String vote_count;
+    private int vote_count;
     private String video;
-    private String vote_average;
+    private Float vote_average;
 
-    public String getVote_average() {
+    public Float getVote_average() {
         return vote_average;
     }
 
-    public void setVote_average(String vote_average) {
+    public void setVote_average(Float vote_average) {
         this.vote_average = vote_average;
     }
 
@@ -46,11 +46,11 @@ public class Results
         this.adult = adult;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -102,11 +102,11 @@ public class Results
         this.original_title = original_title;
     }
 
-    public String getVote_count() {
+    public int getVote_count() {
         return vote_count;
     }
 
-    public void setVote_count(String vote_count) {
+    public void setVote_count(int vote_count) {
         this.vote_count = vote_count;
     }
 
